@@ -18,7 +18,7 @@ sudo sh ./installpapercut
 
 ### Prerequisites
 
-CUPS
+* CUPS
 
 ## Author
 

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+. /usr/local/grid/agile/common/settings.sh
+
+for h in $(qstat -f -qs d -q all{,-{high,low,verylow}}.q@* | grep lx24 | egrep -vw "fly|heddon" | sed s/^.*@//g | cut -d. -f1 | sort -u)
+do
+	if  [ $(qhost -h $h | awk '$2 ~ /lx24/ {print $4}') != '-' ] ; then
+		ssh $h df -h /home/blue{{a..c},{1..9}}/. && qmod -e all{,-{high,low,verylow}}.q@$h; 
+	fi
+done

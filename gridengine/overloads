@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+. /usr/local/grid/agile/common/settings.sh
+qhost | awk '/^air/ && $4 > $3'

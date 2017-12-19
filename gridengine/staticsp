@@ -1,0 +1,11 @@
+#!/bin/bash
+
+target=$1
+sptarget=${target}sp
+ip=$(grep -w $sptarget /root/hosts | awk '{print $1}')
+
+ssh $target "modprobe ipmi_msghandler; modprobe ipmi_devintf; modprobe ipmi_si;"
+ssh $target ipmitool lan set 1 ipsrc static
+ssh $target ipmitool lan set 1 ipaddr $ip
+ssh $target ipmitool lan set 1 netmask 255.255.255.0
+ssh $target ipmitool lan print 1

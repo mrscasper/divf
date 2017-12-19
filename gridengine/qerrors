@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+. /usr/local/grid/agile/common/settings.sh
+
+for h in $(qstat -f -qs E | grep amd | sed s/^.*@//g | cut -d. -f1 | sort -u)
+do
+	if ping -q -c1 $h > /dev/null 2>&1 ; then
+		echo Errors found on $h
+		ssh $h hostname > /dev/null && qmod -c *@$h
+	else
+		echo $h unreachable
+	fi
+done

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+. /usr/local/grid/agile/common/settings.sh
+
+qstat -f -qs d -q all-{high,low,verylow}.q@* | grep -v NA | grep lx24 | sed s/^.*@//g | cut -d. -f1 | sort -u

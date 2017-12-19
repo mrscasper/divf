@@ -1,16 +1,36 @@
-# Dawn Archiving Script
+# Grid Engine Scripts
 
-This script helps with archiving directories on Dawn from the fast working
-disks, to the slower (read only) archiving disks.
+These are small scripts I've developed to assist in day to day Grid Engine
+support for the Speech Group.
 
 ## Getting Started
 
-Put this script somewhere on your path.  It needs to be run on a server that 
-can see all the directories concerned (mifs is a good example).
+Download them and put them in your path.  They need to be run on an administration host.
 
-### Prerequisites
+## overloads
 
-Python
+Lists the hosts where the system load is greater than the number of cores.
+
+## qdels
+
+Obsolete.
+
+## qdhosts
+
+List hosts with disabled queues.
+
+## qerrors
+
+**Useful:** Find queues with error states and clear them.
+
+## reserve
+
+Script for reserving a host (or hosts) for a particular user group.  If you want to reserve it for 
+an individual, just create a user group consisting of only them (use their login name to make it obvious).
+
+## staticsp
+
+Use ipmitool to set the server's service processor to use a static IP address rather than configure itself with DHCP.
 
 ## Author
 

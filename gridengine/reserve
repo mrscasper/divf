@@ -1,0 +1,175 @@
+#!/bin/bash
+
+. /usr/local/grid/agile/common/settings.sh
+
+timereffile=/tmp/reserve.tmp.$$
+
+function usage() {
+    cat <<EOF >&2
+This script reserves execution hosts for a given userlist.
+
+Usage: reserve -i|--interactive  host [host ...]
+Select a user list interactively to reserve the given hosts for
+
+Usage: reserve --reserve=userlist host [host ...]
+This changes the userlist on all queues on the given hosts
+
+N.B. when reserving use --duration="date spec"
+
+Usage: reserve -c|--cancel host [host ...]
+This unreserves the queues on the given hosts
+ 
+Usage: reserve -l|--list
+List the hosts that have been reserved
+
+Usage: reserve --purge
+
+See man page reserve (8) for full usage information.
+ 
+EOF
+exit
+}
+
+function testaccess() {
+    if [[ $USER != root || $(hostname) != fly ]] ; then
+        echo "You must be root on air to perform this action" >&2
+        exit -1
+    fi
+}
+
+function lreserve() {
+    ul="$1"
+    expiry="$2"
+    shift 2
+    for host in $@
+    do
+        for queue in $(qstat -f -q *.q@$host | grep @ | cut -d@ -f1); do
+	    qconf -rattr queue user_lists $ul ${queue}@${host} 
+        done
+	if [ "$ul" = none ]
+	then
+		ssh $host rm -f /etc/motd
+	else
+		cat <<EOF | ssh $host "cat - > /etc/motd"
+Reserved for: $ul
+At: $(date +"%Y-%m-%d %T %s")
+Expires: $expiry 
+EOF
+	fi
+    done
+}
+
+function reservations() {
+    for host in $(qconf -shgrp_resolved @allhosts)
+    do 
+	queue=all-high.q@${host}
+	ul=$(qconf -sq $queue | awk '$1 ~ /^user_lists$/ {print $2}')
+	if [ x$ul != xNONE ]
+	then
+	    printf "%s\t%s\n" $host $ul
+	fi
+    done
+}
+
+function purge() {
+    now=$(date +%s)
+    for host in $(qconf -shgrp_resolved @allhosts); do 
+        queue=all-high.q@${host}
+        ul=$(qconf -sq $queue | awk '$1 ~ /^user_lists$/ {print $2}')
+        if [ x$ul != xNONE ]; then
+            expiry=$(ssh $host "awk '/^Expires:/ {print \$NF}' /etc/motd")
+            if [[ -n "$expiry" && $expiry != forever && $expiry < $now ]]; then
+                echo Reservation for $host has expired.
+                lreserve none forever $host
+            fi
+        fi
+    done
+}
+
+# Parse command line
+ARGS=$(getopt --options iclphr:d:v \
+    --longoptions interactive,cancel,list,purge,help,reserve:,duration:,verbose \
+    --name 'reserve' -- "$@")
+if [ $? != 0 ] ; then
+    usage
+    exit -1
+fi
+
+# preload default values (to be overridden by command line options)
+action=none
+duration=forever
+verbose=no
+
+eval set -- "$ARGS"
+while true ; do
+    case "$1" in
+        -i|--interactive)
+            testaccess
+            action=reserve
+            PS3='Which user list?> '
+            cat<<-EOF
+                Select a user list from the following, by inputting its number: 
+EOF
+            select userlist in none $(qconf -sul)
+	    do
+               break
+            done
+            shift 
+	    ;;
+        -c|--cancel)
+            testaccess
+            action=cancel
+	    shift
+            ;;
+        -l|--list)
+            action=list
+            shift ;;
+        -p|--purge)
+            testaccess
+            action=purge
+            shift ;;
+        -h|--help)
+            usage
+            exit
+            ;;
+        -r|--reserve)
+            testaccess
+            action=reserve
+            userlist="$2"
+            shift 2
+            ;;
+        -d|--duration)
+            touch --date="$2" $timereffile
+            duration=$(date --reference=$timereffile +"%Y-%m-%d %T %s")
+            shift 2
+            ;;
+        -v|--verbose)
+            verbose=yes
+            shift ;;
+        --) 
+            shift
+            break ;;
+        *)
+            echo Argument parsing error >&2
+            exit 1
+            ;;
+    esac
+done
+
+case "$action" in
+    reserve)
+        lreserve "$userlist" "$duration" $@
+        ;;
+    cancel)
+	for host in $@ ; do
+	  lreserve none forever $host
+  	done
+        ;;
+    list)
+        reservations
+        ;;
+    purge)
+        purge
+        ;;
+esac
+

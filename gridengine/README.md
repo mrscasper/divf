@@ -7,6 +7,10 @@ support for the Speech Group.
 
 Download them and put them in your path.  They need to be run on an administration host.
 
+## gpuacct.py
+
+Python script for working out monthly CPU and GPU usage for grant application purposes.
+
 ## overloads
 
 Lists the hosts where the system load is greater than the number of cores.
@@ -31,6 +35,12 @@ an individual, just create a user group consisting of only them (use their login
 ## staticsp
 
 Use ipmitool to set the server's service processor to use a static IP address rather than configure itself with DHCP.
+
+## Dependencies
+
+* Python
+* Bash
+* Need to be run on an admin host
 
 ## Author
 

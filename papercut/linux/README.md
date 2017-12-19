@@ -13,7 +13,7 @@ Example:
 ```
 cp installpapercut /tmp
 cd /tmp
-bash ./installpapercut
+sudo sh ./installpapercut
 ```
 
 ### Prerequisites

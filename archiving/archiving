@@ -1,0 +1,127 @@
+#!/usr/bin/python
+
+# Script to aid in processing lists of paths so that they can be archived.
+# Anna Langley
+# Last modified: 11.9.2017
+
+import argparse
+import sys
+import os
+import stat
+import os.path
+import datetime
+import math
+import re
+
+# Defaults
+defPrefix = "archive"
+defPathPrefix  = "/"
+
+# Get formatted date, so it can be defaulted to.
+# Another date can be used if supplied on the command line
+dateStr = datetime.datetime.today().strftime("%Y%m%d")
+
+
+
+# Parse command line arguments
+parser = argparse.ArgumentParser(
+    description = "Script to aid with archiving files on Dawn.")
+parser.add_argument("-p", "--prefix", 
+	help="Base name of archive jobs.",
+	dest="prefix",
+	default=defPrefix)
+parser.add_argument("-s", "--slash",
+	action="store_true",
+	help="Use this to prepend a / to path names.",
+	dest="leadingSlash")
+parser.add_argument("-d", "--date",
+	help="Use a date other than today (yyyymmdd).",
+	dest="date",
+	default=dateStr)
+parser.add_argument('file', type=argparse.FileType('r'))
+args = parser.parse_args()
+
+filebase = args.prefix + args.date
+if args.leadingSlash:
+	pathPrefix = "/"
+else:
+	pathPrefix = ""
+
+
+
+
+# Read paths from file or stdin
+paths = []
+while 1:
+    try:
+        line = args.file.readline()
+        line = re.sub(r'/$', '', line)
+    except KeyboardInterrupt:
+        break
+    if not line:
+	# No more lines in the file, sort the list and move on.
+        paths.sort()
+        break
+    if os.path.exists(line.strip()) and (line.strip() == os.path.realpath(line.strip())):
+        paths += [os.path.realpath(line.strip())]
+    else:
+	print "Rejected: " + line.strip()
+
+if len(paths) > 0:
+	# Generate the list for archiving
+	archiving = filebase + "-archiving"
+	print "Writing archiving list: %s" % archiving
+	f = open(archiving, 'w')
+	digits = int(math.ceil(math.log10(1 + len(paths))))
+	for i in range(len(paths)):
+	    f.write("%s%0*d\n" % (args.prefix, digits, i + 1))
+	    path = paths[i].split("/")
+	    if path[2] == "dawna":
+		    if args.leadingSlash:
+			    f.write("%s\n%s\n\n" % ("/".join([""] + path[3:]),
+			"/".join(["", "archive", path[2], args.date] + path[3:])))
+		    else:
+			    f.write("%s\n%s\n\n" % ("/".join(path[3:]),
+			"/".join(["archive", path[2], args.date] + path[3:])))
+	    else:
+		    if args.leadingSlash:
+			    f.write("%s\n%s\n\n" % ("/".join([""] + path[2:]),
+			"/".join(["", "archive", path[2], args.date] + path[3:])))
+		    else:
+			    f.write("%s\n%s\n\n" % ("/".join(path[2:]),
+			"/".join(["archive", path[2], args.date] + path[3:])))
+	f.close()
+
+
+
+
+	# Generate the cleanup script
+	cleanup = filebase + "-cleanup.sh"
+	print "Writing cleanup script: %s" % cleanup
+	f = open(cleanup, 'w')
+	f.write("#!/usr/bin/env bash\n\n")
+	trashpaths=[]
+	digits = int(math.ceil(math.log10(len(paths))))
+	for i in range(len(paths)):
+	    prefix = "%s%0*d" % (args.prefix, digits, i + 1)
+	    basename = os.path.basename(paths[i])
+	    path = paths[i].split("/")
+	    path[1] = "archive/dawn"
+	    path.insert(3, args.date)
+	    destination = "/".join(path)
+	    trashpath = os.path.dirname(paths[i]) + "/queued.for.deletion"
+	    trashpaths += [trashpath]
+	    f.write("echo %s: %s\n" % (prefix, paths[i]))
+	    f.write("if [ -d %s ]; then\n" % destination)
+	    f.write("\tmkdir -p %s\n" % trashpath)
+	    f.write("\tmv %s %s/%s\n" % (paths[i], trashpath, basename))
+	    f.write("\tln -s %s %s\n" % (destination, paths[i]))
+	    f.write("fi\n\n")
+
+	# remove duplicates in trashpaths
+	trashpaths = list(set(trashpaths))
+	f.write("screen -dmS cleanup /bin/rm -rvf \\\n\t%s\n" %
+		" \\\n\t".join(trashpaths))
+	f.close()
+	os.chmod(cleanup, 0755)
+

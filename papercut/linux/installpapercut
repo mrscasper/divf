@@ -488,11 +488,9 @@ else ${echo} "x - failed to remove lock directory ${lock_dir}."
      exit 1
 fi
 
-rm /etc/cups/client.conf
+[ -f /etc/cups/client.conf ] && rm /etc/cups/client.conf
 lpadmin -x papercut_colour
 lpadmin -x papercut_mono
-lpadmin -x selene
-lpadmin -x croft
 
 lpadmin \
 	-p papercut_colour \

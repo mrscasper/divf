@@ -1,0 +1,523 @@
+#!/bin/sh
+# Script to install papercut drivers on ubuntu
+
+# This is a shell archive (produced by GNU sharutils 4.14).
+# To extract the files from this archive, save it to some FILE, remove
+# everything before the '#!/bin/sh' line above, then type 'sh FILE'.
+#
+
+
+cd /tmp
+
+lock_dir=_sh164611
+# Made on 2017-11-02 09:14 GMT by <root@mifs>.
+# Source directory was '/tools/sync/ubuntu/papercut'.
+#
+# Existing files will *not* be overwritten, unless '-c' is specified.
+#
+# This shar contains:
+# length mode       name
+# ------ ---------- ------------------------------------------
+#  15053 -rw-r--r-- Xerox-WorkCentre_7345-pxlcolor.ppd
+#
+MD5SUM=${MD5SUM-md5sum}
+f=`${MD5SUM} --version | egrep '^md5sum .*(core|text)utils'`
+test -n "${f}" && md5check=true || md5check=false
+${md5check} || \
+  echo 'Note: not verifying md5sums.  Consider installing GNU coreutils.'
+if test "X$1" = "X-c"
+then keep_file=''
+else keep_file=true
+fi
+echo=echo
+save_IFS="${IFS}"
+IFS="${IFS}:"
+gettext_dir=
+locale_dir=
+set_echo=false
+
+for dir in $PATH
+do
+  if test -f $dir/gettext \
+     && ($dir/gettext --version >/dev/null 2>&1)
+  then
+    case `$dir/gettext --version 2>&1 | sed 1q` in
+      *GNU*) gettext_dir=$dir
+      set_echo=true
+      break ;;
+    esac
+  fi
+done
+
+if ${set_echo}
+then
+  set_echo=false
+  for dir in $PATH
+  do
+    if test -f $dir/shar \
+       && ($dir/shar --print-text-domain-dir >/dev/null 2>&1)
+    then
+      locale_dir=`$dir/shar --print-text-domain-dir`
+      set_echo=true
+      break
+    fi
+  done
+
+  if ${set_echo}
+  then
+    TEXTDOMAINDIR=$locale_dir
+    export TEXTDOMAINDIR
+    TEXTDOMAIN=sharutils
+    export TEXTDOMAIN
+    echo="$gettext_dir/gettext -s"
+  fi
+fi
+IFS="$save_IFS"
+if (echo "testing\c"; echo 1,2,3) | grep c >/dev/null
+then if (echo -n test; echo 1,2,3) | grep n >/dev/null
+     then shar_n= shar_c='
+'
+     else shar_n=-n shar_c= ; fi
+else shar_n= shar_c='\c' ; fi
+f=shar-touch.$$
+st1=200112312359.59
+st2=123123592001.59
+st2tr=123123592001.5 # old SysV 14-char limit
+st3=1231235901
+
+if   touch -am -t ${st1} ${f} >/dev/null 2>&1 && \
+     test ! -f ${st1} && test -f ${f}; then
+  shar_touch='touch -am -t $1$2$3$4$5$6.$7 "$8"'
+
+elif touch -am ${st2} ${f} >/dev/null 2>&1 && \
+     test ! -f ${st2} && test ! -f ${st2tr} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$1$2.$7 "$8"'
+
+elif touch -am ${st3} ${f} >/dev/null 2>&1 && \
+     test ! -f ${st3} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$2 "$8"'
+
+else
+  shar_touch=:
+  echo
+  ${echo} 'WARNING: not restoring timestamps.  Consider getting and
+installing GNU '\''touch'\'', distributed in GNU coreutils...'
+  echo
+fi
+rm -f ${st1} ${st2} ${st2tr} ${st3} ${f}
+#
+if test ! -d ${lock_dir} ; then :
+else ${echo} "lock directory ${lock_dir} exists"
+     exit 1
+fi
+if mkdir ${lock_dir}
+then ${echo} "x - created lock directory ${lock_dir}."
+else ${echo} "x - failed to create lock directory ${lock_dir}."
+     exit 1
+fi
+# ============= Xerox-WorkCentre_7345-pxlcolor.ppd ==============
+if test -n "${keep_file}" && test -f 'Xerox-WorkCentre_7345-pxlcolor.ppd'
+then
+${echo} "x - SKIPPING Xerox-WorkCentre_7345-pxlcolor.ppd (file already exists)"
+
+else
+${echo} "x - extracting Xerox-WorkCentre_7345-pxlcolor.ppd (text)"
+  sed 's/^X//' << 'SHAR_EOF' > 'Xerox-WorkCentre_7345-pxlcolor.ppd' &&
+*PPD-Adobe: "4.3"
+*%
+*% For information on using this, and to obtain the required backend
+*% script, consult http://www.openprinting.org/
+*%
+*% This file is published under the GNU General Public License
+*%
+*% PPD-O-MATIC (4.0.0 or newer) generated this PPD file. It is for use with 
+*% all programs and environments which use PPD files for dealing with
+*% printer capability information. The printer must be configured with the
+*% "foomatic-rip" backend filter script of Foomatic 4.0.0 or newer. This 
+*% file and "foomatic-rip" work together to support PPD-controlled printer
+*% driver option access with all supported printer drivers and printing
+*% spoolers.
+*%
+*% To save this file on your disk, wait until the download has completed
+*% (the animation of the browser logo must stop) and then use the
+*% "Save as..." command in the "File" menu of your browser or in the 
+*% pop-up manu when you click on this document with the right mouse button.
+*% DO NOT cut and paste this file into an editor with your mouse. This can
+*% introduce additional line breaks which lead to unexpected results.
+*%
+*% You may save this file as 'Xerox-WorkCentre_7345-pxlcolor.ppd'
+*%
+*%
+*FormatVersion:	"4.3"
+*FileVersion:	"1.1"
+*LanguageVersion: English 
+*LanguageEncoding: ISOLatin1
+*PCFileName:	"PXLCOLOR.PPD"
+*Manufacturer:	"Xerox"
+*Product:	"(WorkCentre 7345)"
+*cupsVersion:	1.0
+*cupsManualCopies: True
+*cupsModelNumber:  2
+*cupsFilter:	"application/vnd.cups-postscript 100 foomatic-rip"
+*cupsFilter:	"application/vnd.cups-pdf 0 foomatic-rip"
+*%pprRIP:        foomatic-rip other
+*ModelName:     "Xerox WorkCentre 7345"
+*ShortNickName: "Xerox WorkCentre 7345 pxlcolor"
+*NickName:      "Xerox WorkCentre 7345 Foomatic/pxlcolor (recommended)"
+*PSVersion:	"(3010.000) 550"
+*PSVersion:	"(3010.000) 651"
+*PSVersion:	"(3010.000) 652"
+*PSVersion:	"(3010.000) 653"
+*PSVersion:	"(3010.000) 704"
+*PSVersion:	"(3010.000) 705"
+*PSVersion:	"(3010.000) 800"
+*PSVersion:	"(3010.000) 815"
+*PSVersion:	"(3010.000) 850"
+*PSVersion:	"(3010.000) 860"
+*PSVersion:	"(3010.000) 861"
+*PSVersion:	"(3010.000) 862"
+*PSVersion:	"(3010.000) 863"
+*PSVersion:	"(3010.000) 864"
+*PSVersion:	"(3010.000) 870"
+*LanguageLevel:	"3"
+*ColorDevice:	True
+*DefaultColorSpace: RGB
+*FileSystem:	False
+*Throughput:	"1"
+*LandscapeOrientation: Plus90
+*TTRasterizer:	Type42
+*1284DeviceID: "DRV:Dpxlcolor,R1,M0,F1,P0,TG;"
+X
+*driverName pxlcolor: ""
+*driverType G/Ghostscript built-in: ""
+*driverUrl: "http://www.ghostscript.com/"
+*driverObsolete: False
+*driverManufacturerSupplied: False
+*driverFreeSoftware: True
+X
+*DefaultResolution: 1200dpi
+X
+X
+X
+*HWMargins: 18 36 18 36
+*VariablePaperSize: True
+*MaxMediaWidth: 100000
+*MaxMediaHeight: 100000
+*NonUIOrderDependency: 100 AnySetup *CustomPageSize
+*CustomPageSize True: "pop pop pop pop pop
+%% FoomaticRIPOptionSetting: PageSize=Custom"
+*End
+*FoomaticRIPOptionSetting PageSize=Custom: " -dDEVICEWIDTHPOINTS=0 -dD&&
+EVICEHEIGHTPOINTS=0"
+*End
+*ParamCustomPageSize Width: 1 points 36 100000
+*ParamCustomPageSize Height: 2 points 36 100000
+*ParamCustomPageSize Orientation: 3 int 0 0
+*ParamCustomPageSize WidthOffset: 4 points 0 0
+*ParamCustomPageSize HeightOffset: 5 points 0 0
+X
+*FoomaticIDs: Xerox-WorkCentre_7345 pxlcolor
+*FoomaticRIPCommandLine: "gs -q -dBATCH -dPARANOIDSAFER -dNOPAUSE -dNO&&
+INTERPOLATE%B%A%Z -sOutputFile=- -"
+*End
+X
+*OpenGroup: General/General
+X
+*OpenUI *PrintoutMode/Print Quality: PickOne
+*FoomaticRIPOption PrintoutMode: enum Composite A
+*OrderDependency: 10 AnySetup *PrintoutMode
+*DefaultPrintoutMode: Normal
+*PrintoutMode Draft/Draft: "%% FoomaticRIPOptionSetting: PrintoutMode=Draft"
+*FoomaticRIPOptionSetting PrintoutMode=Draft: "PrinterResolution=600x6&&
+00dpi ColorModel=Color"
+*End
+*PrintoutMode Draft.Gray/Draft Grayscale: "%% FoomaticRIPOptionSetting: PrintoutMode=Draft.Gray"
+*FoomaticRIPOptionSetting PrintoutMode=Draft.Gray: "PrinterResolution=&&
+600x600dpi ColorModel=Grayscale"
+*End
+*PrintoutMode Normal/Normal: "%% FoomaticRIPOptionSetting: PrintoutMode=Normal"
+*FoomaticRIPOptionSetting PrintoutMode=Normal: "PrinterResolution=600x&&
+600dpi ColorModel=Color"
+*End
+*PrintoutMode Normal.Gray/Normal Grayscale: "%% FoomaticRIPOptionSetting: PrintoutMode=Normal.Gray"
+*FoomaticRIPOptionSetting PrintoutMode=Normal.Gray: "PrinterResolution&&
+=600x600dpi ColorModel=Grayscale"
+*End
+*PrintoutMode High/High Quality: "%% FoomaticRIPOptionSetting: PrintoutMode=High"
+*FoomaticRIPOptionSetting PrintoutMode=High: "PrinterResolution=1200x1&&
+200dpi ColorModel=Color"
+*End
+*PrintoutMode High.Gray/High Quality Grayscale: "%% FoomaticRIPOptionSetting: PrintoutMode=High.Gray"
+*FoomaticRIPOptionSetting PrintoutMode=High.Gray: "PrinterResolution=1&&
+200x1200dpi ColorModel=Grayscale"
+*End
+*CloseUI: *PrintoutMode
+X
+*OpenUI *PageSize/Page Size: PickOne
+*FoomaticRIPOption PageSize: enum CmdLine A
+*OrderDependency: 100 AnySetup *PageSize
+*DefaultPageSize: Letter
+*PageSize Letter/US Letter: "%% FoomaticRIPOptionSetting: PageSize=Letter"
+*FoomaticRIPOptionSetting PageSize=Letter: " -dDEVICEWIDTHPOINTS=612 -&&
+dDEVICEHEIGHTPOINTS=792"
+*End
+*PageSize A4/A4: "%% FoomaticRIPOptionSetting: PageSize=A4"
+*FoomaticRIPOptionSetting PageSize=A4: " -dDEVICEWIDTHPOINTS=595 -dDEV&&
+ICEHEIGHTPOINTS=842"
+*End
+*PageSize 11x17/11x17: "%% FoomaticRIPOptionSetting: PageSize=11x17"
+*FoomaticRIPOptionSetting PageSize=11x17: " -dDEVICEWIDTHPOINTS=792 -d&&
+DEVICEHEIGHTPOINTS=1224"
+*End
+*PageSize A3/A3: "%% FoomaticRIPOptionSetting: PageSize=A3"
+*FoomaticRIPOptionSetting PageSize=A3: " -dDEVICEWIDTHPOINTS=842 -dDEV&&
+ICEHEIGHTPOINTS=1191"
+*End
+*PageSize A5/A5: "%% FoomaticRIPOptionSetting: PageSize=A5"
+*FoomaticRIPOptionSetting PageSize=A5: " -dDEVICEWIDTHPOINTS=421 -dDEV&&
+ICEHEIGHTPOINTS=595"
+*End
+*PageSize B5/B5 (JIS): "%% FoomaticRIPOptionSetting: PageSize=B5"
+*FoomaticRIPOptionSetting PageSize=B5: " -dDEVICEWIDTHPOINTS=516 -dDEV&&
+ICEHEIGHTPOINTS=729"
+*End
+*PageSize Env10/Envelope #10: "%% FoomaticRIPOptionSetting: PageSize=Env10"
+*FoomaticRIPOptionSetting PageSize=Env10: " -dDEVICEWIDTHPOINTS=297 -d&&
+DEVICEHEIGHTPOINTS=684"
+*End
+*PageSize EnvC5/Envelope C5: "%% FoomaticRIPOptionSetting: PageSize=EnvC5"
+*FoomaticRIPOptionSetting PageSize=EnvC5: " -dDEVICEWIDTHPOINTS=459 -d&&
+DEVICEHEIGHTPOINTS=649"
+*End
+*PageSize EnvDL/Envelope DL: "%% FoomaticRIPOptionSetting: PageSize=EnvDL"
+*FoomaticRIPOptionSetting PageSize=EnvDL: " -dDEVICEWIDTHPOINTS=312 -d&&
+DEVICEHEIGHTPOINTS=624"
+*End
+*PageSize EnvISOB5/Envelope B5: "%% FoomaticRIPOptionSetting: PageSize=EnvISOB5"
+*FoomaticRIPOptionSetting PageSize=EnvISOB5: " -dDEVICEWIDTHPOINTS=499&&
+X -dDEVICEHEIGHTPOINTS=709"
+*End
+*PageSize EnvMonarch/Envelope Monarch: "%% FoomaticRIPOptionSetting: PageSize=EnvMonarch"
+*FoomaticRIPOptionSetting PageSize=EnvMonarch: " -dDEVICEWIDTHPOINTS=2&&
+79 -dDEVICEHEIGHTPOINTS=540"
+*End
+*PageSize Executive/Executive: "%% FoomaticRIPOptionSetting: PageSize=Executive"
+*FoomaticRIPOptionSetting PageSize=Executive: " -dDEVICEWIDTHPOINTS=52&&
+2 -dDEVICEHEIGHTPOINTS=756"
+*End
+*PageSize Legal/US Legal: "%% FoomaticRIPOptionSetting: PageSize=Legal"
+*FoomaticRIPOptionSetting PageSize=Legal: " -dDEVICEWIDTHPOINTS=612 -d&&
+DEVICEHEIGHTPOINTS=1008"
+*End
+*CloseUI: *PageSize
+X
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 100 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*PageRegion Letter/US Letter: "%% FoomaticRIPOptionSetting: PageSize=Letter"
+*PageRegion A4/A4: "%% FoomaticRIPOptionSetting: PageSize=A4"
+*PageRegion 11x17/11x17: "%% FoomaticRIPOptionSetting: PageSize=11x17"
+*PageRegion A3/A3: "%% FoomaticRIPOptionSetting: PageSize=A3"
+*PageRegion A5/A5: "%% FoomaticRIPOptionSetting: PageSize=A5"
+*PageRegion B5/B5 (JIS): "%% FoomaticRIPOptionSetting: PageSize=B5"
+*PageRegion Env10/Envelope #10: "%% FoomaticRIPOptionSetting: PageSize=Env10"
+*PageRegion EnvC5/Envelope C5: "%% FoomaticRIPOptionSetting: PageSize=EnvC5"
+*PageRegion EnvDL/Envelope DL: "%% FoomaticRIPOptionSetting: PageSize=EnvDL"
+*PageRegion EnvISOB5/Envelope B5: "%% FoomaticRIPOptionSetting: PageSize=EnvISOB5"
+*PageRegion EnvMonarch/Envelope Monarch: "%% FoomaticRIPOptionSetting: PageSize=EnvMonarch"
+*PageRegion Executive/Executive: "%% FoomaticRIPOptionSetting: PageSize=Executive"
+*PageRegion Legal/US Legal: "%% FoomaticRIPOptionSetting: PageSize=Legal"
+*CloseUI: *PageRegion
+X
+*DefaultImageableArea: Letter
+*ImageableArea Letter/US Letter: "18 36 594 756"
+*ImageableArea A4/A4: "18 36 577 806"
+*ImageableArea 11x17/11x17: "18 36 774 1188"
+*ImageableArea A3/A3: "18 36 824 1155"
+*ImageableArea A5/A5: "18 36 403 559"
+*ImageableArea B5/B5 (JIS): "18 36 498 693"
+*ImageableArea Env10/Envelope #10: "18 36 279 648"
+*ImageableArea EnvC5/Envelope C5: "18 36 441 613"
+*ImageableArea EnvDL/Envelope DL: "18 36 294 588"
+*ImageableArea EnvISOB5/Envelope B5: "18 36 481 673"
+*ImageableArea EnvMonarch/Envelope Monarch: "18 36 261 504"
+*ImageableArea Executive/Executive: "18 36 504 720"
+*ImageableArea Legal/US Legal: "18 36 594 972"
+X
+*DefaultPaperDimension: Letter
+*PaperDimension Letter/US Letter: "612 792"
+*PaperDimension A4/A4: "595 842"
+*PaperDimension 11x17/11x17: "792 1224"
+*PaperDimension A3/A3: "842 1191"
+*PaperDimension A5/A5: "421 595"
+*PaperDimension B5/B5 (JIS): "516 729"
+*PaperDimension Env10/Envelope #10: "297 684"
+*PaperDimension EnvC5/Envelope C5: "459 649"
+*PaperDimension EnvDL/Envelope DL: "312 624"
+*PaperDimension EnvISOB5/Envelope B5: "499 709"
+*PaperDimension EnvMonarch/Envelope Monarch: "279 540"
+*PaperDimension Executive/Executive: "522 756"
+*PaperDimension Legal/US Legal: "612 1008"
+X
+*OpenUI *InputSlot/Media Source: PickOne
+*FoomaticRIPOption InputSlot: enum CmdLine A
+*OrderDependency: 100 AnySetup *InputSlot
+*DefaultInputSlot: Default
+*InputSlot Default/Printer Default: "%% FoomaticRIPOptionSetting: InputSlot=Default"
+*FoomaticRIPOptionSetting InputSlot=Default: " -dMediaPosition=0"
+*InputSlot Upper/Upper Tray: "%% FoomaticRIPOptionSetting: InputSlot=Upper"
+*FoomaticRIPOptionSetting InputSlot=Upper: " -dMediaPosition=4"
+*InputSlot Middle/Middle Tray: "%% FoomaticRIPOptionSetting: InputSlot=Middle"
+*FoomaticRIPOptionSetting InputSlot=Middle: " -dMediaPosition=5"
+*InputSlot Lower/Lower Tray: "%% FoomaticRIPOptionSetting: InputSlot=Lower"
+*FoomaticRIPOptionSetting InputSlot=Lower: " -dMediaPosition=6"
+*InputSlot Multipurpose/Multipurpose Tray: "%% FoomaticRIPOptionSetting: InputSlot=Multipurpose"
+*FoomaticRIPOptionSetting InputSlot=Multipurpose: " -dMediaPosition=3"
+*InputSlot Automatic/Automatic: "%% FoomaticRIPOptionSetting: InputSlot=Automatic"
+*FoomaticRIPOptionSetting InputSlot=Automatic: " -dMediaPosition=1"
+*InputSlot Manual/Manual Feeder: "%% FoomaticRIPOptionSetting: InputSlot=Manual"
+*FoomaticRIPOptionSetting InputSlot=Manual: " -dMediaPosition=2"
+*CloseUI: *InputSlot
+X
+*OpenUI *Duplex/Double-Sided Printing: PickOne
+*FoomaticRIPOption Duplex: enum CmdLine A
+*OrderDependency: 100 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex DuplexNoTumble/On (Flip on Long Edge): "%% FoomaticRIPOptionSetting: Duplex=DuplexNoTumble"
+*FoomaticRIPOptionSetting Duplex=DuplexNoTumble: " -dDuplex"
+*Duplex DuplexTumble/On (Flip on Short Edge): "%% FoomaticRIPOptionSetting: Duplex=DuplexTumble"
+*FoomaticRIPOptionSetting Duplex=DuplexTumble: " -dDuplex -dTumble"
+*Duplex None/Off: "%% FoomaticRIPOptionSetting: Duplex=None"
+*FoomaticRIPOptionSetting Duplex=None: ""
+*CloseUI: *Duplex
+X
+*CloseGroup: General
+X
+*OpenGroup: PrintoutMode/Printout Mode
+X
+*OpenUI *ColorModel/Color Mode: PickOne
+*FoomaticRIPOption ColorModel: enum CmdLine B
+*OrderDependency: 100 AnySetup *ColorModel
+*DefaultColorModel: FromPrintoutMode
+*ColorModel FromPrintoutMode/Controlled by 'Print Quality': "%% FoomaticRIPOptionSetting: ColorModel=@PrintoutMode"
+*ColorModel Color/Color: "%% FoomaticRIPOptionSetting: ColorModel=Color"
+*FoomaticRIPOptionSetting ColorModel=Color: " -sDEVICE=pxlcolor"
+*ColorModel Grayscale/Monochrome: "%% FoomaticRIPOptionSetting: ColorModel=Grayscale"
+*FoomaticRIPOptionSetting ColorModel=Grayscale: " -sDEVICE=pxlmono"
+*CloseUI: *ColorModel
+X
+*OpenUI *PrinterResolution/Resolution: PickOne
+*FoomaticRIPOption PrinterResolution: enum CmdLine A
+*OrderDependency: 100 AnySetup *PrinterResolution
+*DefaultPrinterResolution: FromPrintoutMode
+*PrinterResolution FromPrintoutMode/Controlled by 'Print Quality': "%% FoomaticRIPOptionSetting: PrinterResolution=@PrintoutMode"
+*PrinterResolution 300x300dpi/300x300 DPI: "%% FoomaticRIPOptionSetting: PrinterResolution=300x300dpi"
+*FoomaticRIPOptionSetting PrinterResolution=300x300dpi: " -r300x300"
+*PrinterResolution 600x600dpi/600x600 DPI: "%% FoomaticRIPOptionSetting: PrinterResolution=600x600dpi"
+*FoomaticRIPOptionSetting PrinterResolution=600x600dpi: " -r600x600"
+*PrinterResolution 1200x1200dpi/1200x1200 DPI: "%% FoomaticRIPOptionSetting: PrinterResolution=1200x1200dpi"
+*FoomaticRIPOptionSetting PrinterResolution=1200x1200dpi: " -r1200x120&&
+0"
+*End
+*CloseUI: *PrinterResolution
+X
+*CloseGroup: PrintoutMode
+X
+X
+*% Generic boilerplate PPD stuff as standard PostScript fonts and so on
+X
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-Demi: Standard "(001.007S)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(001.007S)" Standard ROM
+*Font Bookman-Demi: Standard "(001.004S)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(001.004S)" Standard ROM
+*Font Bookman-Light: Standard "(001.004S)" Standard ROM
+*Font Bookman-LightItalic: Standard "(001.004S)" Standard ROM
+*Font Courier: Standard "(002.004S)" Standard ROM
+*Font Courier-Bold: Standard "(002.004S)" Standard ROM
+*Font Courier-BoldOblique: Standard "(002.004S)" Standard ROM
+*Font Courier-Oblique: Standard "(002.004S)" Standard ROM
+*Font Helvetica: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Oblique: Standard "(001.006S)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(001.009S)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(001.007S)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(001.006S)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(001.007S)" Standard ROM
+*Font Palatino-Bold: Standard "(001.005S)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(001.005S)" Standard ROM
+*Font Palatino-Italic: Standard "(001.005S)" Standard ROM
+*Font Palatino-Roman: Standard "(001.005S)" Standard ROM
+*Font Symbol: Special "(001.007S)" Special ROM
+*Font Times-Bold: Standard "(001.007S)" Standard ROM
+*Font Times-BoldItalic: Standard "(001.009S)" Standard ROM
+*Font Times-Italic: Standard "(001.007S)" Standard ROM
+*Font Times-Roman: Standard "(001.007S)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(001.007S)" Standard ROM
+*Font ZapfDingbats: Special "(001.004S)" Standard ROM
+X
+SHAR_EOF
+  (set 20 15 06 30 17 56 51 'Xerox-WorkCentre_7345-pxlcolor.ppd'
+   eval "${shar_touch}") && \
+  chmod 0644 'Xerox-WorkCentre_7345-pxlcolor.ppd'
+if test $? -ne 0
+then ${echo} "restore of Xerox-WorkCentre_7345-pxlcolor.ppd failed"
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'Xerox-WorkCentre_7345-pxlcolor.ppd': 'MD5 check failed'
+       ) << \SHAR_EOF
+8cc96b2143b5639ee16ddce1578174f8  Xerox-WorkCentre_7345-pxlcolor.ppd
+SHAR_EOF
+
+else
+test `LC_ALL=C wc -c < 'Xerox-WorkCentre_7345-pxlcolor.ppd'` -ne 15053 && \
+  ${echo} "restoration warning:  size of 'Xerox-WorkCentre_7345-pxlcolor.ppd' is not 15053"
+  fi
+fi
+if rm -fr ${lock_dir}
+then ${echo} "x - removed lock directory ${lock_dir}."
+else ${echo} "x - failed to remove lock directory ${lock_dir}."
+     exit 1
+fi
+
+rm /etc/cups/client.conf
+lpadmin -x papercut_colour
+lpadmin -x papercut_mono
+lpadmin -x selene
+lpadmin -x croft
+
+lpadmin \
+	-p papercut_colour \
+	-D "Papercut Colour" \
+	-L "Department of Engineering" \
+	-E  -v lpd://papercut.eng.cam.ac.uk/printers \
+	-P "/tmp/Xerox-WorkCentre_7345-pxlcolor.ppd" \
+	-o printer-error-policy="retry-current-job" \
+	-o printer-is-shared="False" \
+	-o XRFinisher=SBFinisher
+
+lpadmin \
+	-p papercut_mono \
+	-D "Papercut Mono" \
+	-L "Department of Engineering" \
+	-E  -v lpd://papercut.eng.cam.ac.uk/printers \
+	-P "/tmp/Xerox-WorkCentre_7345-pxlcolor.ppd" \
+	-o printer-error-policy="retry-current-job" \
+	-o printer-is-shared="False" \
+	-o XROutputColor=PrintAsGrayscale \
+	-o XRFinisher=SBFinisher
+
+echo Default papercut_mono > /etc/cups/lpoptions
+echo > /etc/cups/client.conf
+echo Default printer is $(cat /etc/cups/lpoptions)
+lpq -P papercut_mono
+lpq -P papercut_colour
+rm -f /tmp/Xerox-WorkCentre_7345-pxlcolor.ppd

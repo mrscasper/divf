@@ -1,11 +1,11 @@
 #!/bin/sh
 # Script to install papercut drivers on ubuntu
-
-# This is a shell archive (produced by GNU sharutils 4.14).
-# To extract the files from this archive, save it to some FILE, remove
-# everything before the '#!/bin/sh' line above, then type 'sh FILE'.
+# Anna Langley <jal58@cam.ac.uk> November 2017
 #
-
+# Tested on Ubuntu and CentOS. It should work on other distros
+# because the only dependency is that the system has cups installed.
+#
+# Needs to be run as superuser.
 
 cd /tmp
 

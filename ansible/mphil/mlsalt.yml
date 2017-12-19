@@ -1,0 +1,371 @@
+- hosts: cpuservers
+  tasks:
+  - name: Install package aptitude
+    apt:
+      name: aptitude
+      state: present
+  - name: Install package autoconf
+    apt:
+      name: autoconf
+      state: present
+  - name: Install package autofs
+    apt:
+      name: autofs
+      state: present
+  - name: Install package build-essential
+    apt:
+      name: build-essential
+      state: present
+  - name: Install package cmake
+    apt:
+      name: cmake
+      state: present
+  - name: Install package compizconfig-settings-manager
+    apt:
+      name: compizconfig-settings-manager
+      state: present
+  - name: Install package cpufrequtils
+    apt:
+      name: cpufrequtils
+      state: present
+  - name: Install package csh
+    apt:
+      name: csh
+      state: present
+  - name: Install package curl
+    apt:
+      name: curl
+      state: present
+  - name: Install package cython
+    apt:
+      name: cython
+      state: present
+  - name: Install package emacs
+    apt:
+      name: emacs
+      state: present
+  - name: Install package environment-modules
+    apt:
+      name: environment-modules
+      state: present
+  - name: Install package ethtool
+    apt:
+      name: ethtool
+      state: present
+  - name: Install package feh
+    apt:
+      name: feh
+      state: present
+  - name: Install package finger
+    apt:
+      name: finger
+      state: present
+  - name: Install package gawk
+    apt:
+      name: gawk
+      state: present
+  - name: Install package gcc-multilib
+    apt:
+      name: gcc-multilib
+      state: present
+  - name: Install package gfortran
+    apt:
+      name: gfortran
+      state: present
+  - name: Install package git
+    apt:
+      name: git
+      state: present
+  - name: Install package gnome-shell
+    apt:
+      name: gnome-shell
+      state: present
+  - name: Install package gnome-tweak-tool
+    apt:
+      name: gnome-tweak-tool
+      state: present
+  - name: Install package gnuplot
+    apt:
+      name: gnuplot
+      state: present
+  - name: Install package heirloom-mailx
+    apt:
+      name: heirloom-mailx
+      state: present
+  - name: Install package k3b
+    apt:
+      name: k3b
+      state: present
+  - name: Install package kile
+    apt:
+      name: kile
+      state: present
+  - name: Install package libatlas-base-dev
+    apt:
+      name: libatlas-base-dev
+      state: present
+  - name: Install package libavcodec-dev
+    apt:
+      name: libavcodec-dev
+      state: present
+  - name: Install package libavformat-dev
+    apt:
+      name: libavformat-dev
+      state: present
+  - name: Install package libavresample-dev
+    apt:
+      name: libavresample-dev
+      state: present
+  - name: Install package libcupti-dev
+    apt:
+      name: libcupti-dev
+      state: present
+  - name: Install package libdc1394-22-dev
+    apt:
+      name: libdc1394-22-dev
+      state: present
+  - name: Install package libgtk-3-dev
+    apt:
+      name: libgtk-3-dev
+      state: present
+  - name: Install package libgtk2.0-dev
+    apt:
+      name: libgtk2.0-dev
+      state: present
+  - name: Install package libjasper-dev
+    apt:
+      name: libjasper-dev
+      state: present
+  - name: Install package libjpeg-dev
+    apt:
+      name: libjpeg-dev
+      state: present
+  - name: Install package libjpeg8-dev
+    apt:
+      name: libjpeg8-dev
+      state: present
+  - name: Install package libopencv-dev
+    apt:
+      name: libopencv-dev
+      state: present
+  - name: Install package libpng12-dev
+    apt:
+      name: libpng12-dev
+      state: present
+  - name: Install package libstdc++5
+    apt:
+      name: libstdc++5
+      state: present
+  - name: Install package libswscale-dev
+    apt:
+      name: libswscale-dev
+      state: present
+  - name: Install package libtbb-dev
+    apt:
+      name: libtbb-dev
+      state: present
+  - name: Install package libtbb2
+    apt:
+      name: libtbb2
+      state: present
+  - name: Install package libtiff-dev
+    apt:
+      name: libtiff-dev
+      state: present
+  - name: Install package libv4l-dev
+    apt:
+      name: libv4l-dev
+      state: present
+  - name: Install package libvncclient1
+    apt:
+      name: libvncclient1
+      state: present
+  - name: Install package libwxgtk3.0-dev
+    apt:
+      name: libwxgtk3.0-dev
+      state: present
+  - name: Install package libx264-dev
+    apt:
+      name: libx264-dev
+      state: present
+  - name: Install package libxvidcore-dev
+    apt:
+      name: libxvidcore-dev
+      state: present
+  - name: Install package lightdm-gtk-greeter
+    apt:
+      name: lightdm-gtk-greeter
+      state: present
+  - name: Install package meshlab
+    apt:
+      name: meshlab
+      state: present
+  - name: Install package moreutils
+    apt:
+      name: moreutils
+      state: present
+  - name: Install package nfs-client
+    apt:
+      name: nfs-client
+      state: present
+  - name: Install package nfs-common
+    apt:
+      name: nfs-common
+      state: present
+  - name: Install package ntp
+    apt:
+      name: ntp
+      state: present
+  - name: Install package openmpi-bin
+    apt:
+      name: openmpi-bin
+      state: present
+  - name: Install package openssh-server
+    apt:
+      name: openssh-server
+      state: present
+  - name: Install package pkg-config
+    apt:
+      name: pkg-config
+      state: present
+  - name: Install package pwgen
+    apt:
+      name: pwgen
+      state: present
+  - name: Install package python-dev
+    apt:
+      name: python-dev
+      state: present
+  - name: Install package python-matplotlib
+    apt:
+      name: python-matplotlib
+      state: present
+  - name: Install package python-numpy
+    apt:
+      name: python-numpy
+      state: present
+  - name: Install package python-opencv
+    apt:
+      name: python-opencv
+      state: present
+  - name: Install package python-pip
+    apt:
+      name: python-pip
+      state: present
+  - name: Install package python-pydot
+    apt:
+      name: python-pydot
+      state: present
+  - name: Install package python-pydot-ng
+    apt:
+      name: python-pydot-ng
+      state: present
+  - name: Install package python3-pydot
+    apt:
+      name: python3-pydot
+      state: present
+  - name: Install package python-scipy
+    apt:
+      name: python-scipy
+      state: present
+  - name: Install package python-virtualenv
+    apt:
+      name: python-virtualenv
+      state: present
+  - name: Install package python2.7-dev
+    apt:
+      name: python2.7-dev
+      state: present
+  - name: Install package python3.5-dev
+    apt:
+      name: python3.5-dev
+      state: present
+  - name: Install package qtbase5-dev
+    apt:
+      name: qtbase5-dev
+      state: present
+  - name: Install package quota
+    apt:
+      name: quota
+      state: present
+  - name: Install package remmina-plugin-vnc
+    apt:
+      name: remmina-plugin-vnc
+      state: present
+  - name: Install package sharutils
+    apt:
+      name: sharutils
+      state: present
+  - name: Install package screen
+    apt:
+      name: screen
+      state: present
+  - name: Install package synaptic
+    apt:
+      name: synaptic
+      state: present
+  - name: Install package tcsh
+    apt:
+      name: tcsh
+      state: present
+  - name: Install package valgrind
+    apt:
+      name: valgrind
+      state: present
+  - name: Install package vim
+    apt:
+      name: vim
+      state: present
+  - name: Install package vlc
+    apt:
+      name: vlc
+      state: present
+  - name: Install package w3m
+    apt:
+      name: w3m
+      state: present
+  - name: Install package wx-i18n
+    apt:
+      name: wx-i18n
+      state: present
+  - name: Install package xpdf
+    apt:
+      name: xpdf
+      state: present
+  - name: Install package xtightvncviewer
+    apt:
+      name: xtightvncviewer
+      state: present
+  - name: pip install pip
+    pip:
+      name: pip
+  - name: pip install https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp27-cp27mu-linux_x86_64.whl
+    pip:
+      name: https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp27-cp27mu-linux_x86_64.whl
+  - name: pip install gensim
+    pip:
+      name: gensim
+  - name: pip install nltk
+    pip:
+      name: nltk
+  - name: pip install opendr
+    pip:
+      name: opendr
+  - name: pip install jupyter
+    pip:
+      name: jupyter
+  - name: pip install Theano
+    pip:
+      name: Theano
+  - name: pip install tensorflow
+    pip:
+      name: tensorflow
+  - name: pip install virtualenvwrapper
+    pip:
+      name: virtualenvwrapper
+  - name: pip install pymesh
+    pip:
+      name: pymesh
+  - name: pip install h5py
+    pip:
+      name: h5py
